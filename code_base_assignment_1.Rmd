@@ -1,0 +1,43 @@
+---
+title: "Code Base Assignment 1 – Loading Data"
+author: "Joshua Henry"
+date: "2026-02-01"
+output: html_document
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+getwd()
+
+```
+## Overview
+
+This assignment uses a publicly available data set containing inpatient discharge
+counts for facilities across the state of Florida during 2024. The purpose of this
+analysis is to load the data into R, perform basic transformations, and create a
+clean data frame suitable for further analysis.
+library(readxl)
+
+inpatient_data <- read_excel("2024 INPATIENT & COMP DATA.xlsx")
+
+str(inpatient_data)
+head(inpatient_data)
+
+inpatient_subset <- inpatient_data[, c(
+  "FACILITY COUNTY",
+  "FACILITY CITY",
+  "FACILITY NAME",
+  "QTR 1",
+  "QTR 2",
+  "QTR 3",
+  "QTR 4"
+)]
+
+summary(inpatient_subset)
+
+## Conclusions
+
+Preliminary inspection of the data suggests that inpatient discharge volumes
+vary substantially across Florida regions. Facilities in Central and Northern
+Florida appear to report higher inpatient counts compared to those in South
+Florida, indicating potential regional differences in healthcare utilization.
+
